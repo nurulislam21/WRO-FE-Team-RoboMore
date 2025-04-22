@@ -16,7 +16,7 @@ ROI4 = [0, 160, 640, 480]  # Signal detection area
 
 # Color ranges (HSV format)
 LOWER_BLACK = np.array([0, 0, 0])
-UPPER_BLACK = np.array([180, 255, 30])
+UPPER_BLACK = np.array([180, 255, 100])
 LOWER_ORANGE = np.array([10, 100, 100])
 UPPER_ORANGE = np.array([25, 255, 255])
 LOWER_BLUE = np.array([90, 100, 100])
@@ -86,6 +86,7 @@ def process_signal_data(data):
 
 def main():
     cap = cv2.VideoCapture(0)
+    # cap = cv2.VideoCapture('wro2020-fe-POV2-120d-ezgif.com-resize.gif')
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, CAM_WIDTH)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, CAM_HEIGHT)
 
@@ -183,7 +184,7 @@ def main():
 
         # Exit conditions
         if t >= 12 and abs(angle - straightConst) <= 10:
-            print("Course completed!")
+            print("Lap completed!")
             break
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
